@@ -1,0 +1,91 @@
+version: '3.8'
+
+# networks:
+#   external_network:
+#     external: true
+#     # internal: true
+#     driver: bridge
+
+services:
+  server:
+    image: nginx:alpine
+    container_name: nginx_kontti
+    ports:
+      - 1234:1234  #Pyörii localhostissa
+    volumes:
+      - app:/usr/share/nginx/html
+    # networks:
+    #   - external_network
+
+  client:
+    image: clientapp
+    container_name: client_kontti
+    # ports:
+    #   - 1234:80
+    network_mode: host
+    # networks:
+    #   - external_network
+    command: tail -F anything
+
+volumes:
+  app:
+  # servervol:
+  # clientvol:
+  # networks:
+  #   - custom_network
+###########################################################################
+
+# networks:
+#   custom_network:
+#     driver: bridge
+
+# services:
+#   db_server:   #database/verkko kontti
+#     image: postgres:13.2-alpine # database
+#     container_name: db_kontti #kutsutaan tällä
+#     volumes:
+#      - servervol:/serverdata:rw
+#     ports:
+#       - 1234:1234 #tarkista vielä, että mikä IP osoite.
+#     networks:
+#       - custom_network
+#     restart: unless-stopped
+
+#     #environment:
+#     #  POSTGRES_PASSWORD: example  #määritellään salasana
+
+###########################################################################
+
+    #depends_on:
+    #  - db_server
+
+###########################################################################
+
+  #client:
+  #  image: ubuntu:20.04
+  #  container_name: asiakas_kontti
+  #  command: tail -F anything #pitää kontin elossa
+  #  volumes:
+  #    - clientvol:/clientdata:rw
+  #  networks:
+  #    - custom_network
+    
+###########################################################################
+
+  # asiakas voi ajaa esim. curl
+  # checksum tehdään asiakkaan kontissa ja verrataan palvelimen checksummiin
+    # voidaan tehdä checksum nimisellä työkalulla TAI md5
+
+    # esim. 
+    # md5sum docker-compose.yml > md5sum.txt
+      # cat md5sum.txt
+
+    # md5sum -c # c=check #vertaa / tarkistaa
+
+# 1. server kontissa luodaan 1 KB tiedosto
+# 2. asiakas kontti hakee 1 KB tiedoston ja vertaa checksumin
+# 3. luo scriptit, joilla voidaan pystyttää jompikumpi konteista yksinään
+# scriptien PITÄÄ sisältää myös voluumien muodostuminen sekä verkon muodostuminen
+# 4. docker compose luo koko ympäristön
+#clientvol:
+# checksum tieto = tarkistaa, että 1 KB tiedosto tuli oikein perille
