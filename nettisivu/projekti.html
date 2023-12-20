@@ -18,8 +18,24 @@
   </div>
   <div class="container">
     <div class="row">
+            <h3>Mikropalveluarkkitehtuuri</h3>
+            <p>Mikropalveluarkkitehtuurissa sovellus koostuu useista pienistä palveluista, jotka liittyvät löyhästi toisiinsa ovat itsenäisesti asennettavissa. Jokainen mikropalvelin vastaa tietyistä toiminnallisuuksista ja palvelut kommunikoivat keskenään. Kommunikointiin palvelut käyttävät kevyitä protokollia kuten HTTP/REST. Jokaisella mikropalvelulla on oma lähdekoodi, tietokanta ja työkalut, eli niitä voi kehittää ja asentaa toisistaan riippumatta. 
+              <br/>
+              <br/>
+                Mikropalveluarkkitehtuurilla on useita hyötyjä. Palvelut ovat pieniä ja helposti ymmärrettäviä, jolloin kehits ja asennus nopeutuvat. Tämä mahdollistaa myös paremman skaalattavuuden. Kun palvelu koostuu useista mikropalveluista, se on vikasietoisempi. Ongelma yhdellä osa-alueella ei vie koko palvelua alas. Yksittäiset pienet osa-alueet ovat myös helpommin ylläpidettävissä.
+              <br/>
+              <br/>
+                Kuten kaikissa asioissa, myös mikropalveluarkkitehtuurissa on haasteita. Suuressa, monesta mikropalvelusta koostuvassa palvelussa kokonaisuus voi muuttua monimutkaiseksi ja haastavaksi ymmärtää. Mikropalvelut pyörivät jokainen omassa ympäristössään, joten resurssien kulutus voi olla suurta.  Myös tiedonsiirrossa voi olla viiveitä, sillä mikropalvelut kommunikoivat toistensa kanssa verkon yli.
+            </p>
+            <h3>Konttiteknologia</h3>
+            <p>Konttien avulla ohjelmille tarjotaan standardoitu ympäristö, jossa niitä voidaan ajaa. Ohjelman ollessa asetettuna konttiin, sitä voidaan siirrellä kehittäjän tietokoneelta testiympäristöön ja sieltä tuotantoon. Kontteja voidaan helposti myös siirtää julkiseen pilveen. Kontit ovat standardoitu tapa pakata ohjelmisto niin, että sitä voidaan siirtää paikasta toiseen ilman, että ohjelmistoa tarvitsee muokata.
+              <br/>
+              <br/>
+                Konttien ansiosta sovellus tarvitsee vähemmän resursseja, ja niiden suorituskyky on virtuaalipalvelinta parempi. Konttien yksi selkeä etu on myös ympäristön standardointi. Tästä syystä konttia on helpompi liikuttaa konesalista toiseen kuin virtuaalikonetta. Koska yksi kontti sisältää usein vain ohjelman tietyn ominaisuuden, mahdollistuu ohjelman päivittäminen pala kerrallaan. Tämä nopeuttaa ja helpottaa ohjelmistokehitystä, sillä mahdollisissa ongelmatilanteissa on helppo palata vanhaan ympäristöön. Dockerin vahvuuksiin kuuluu se, että se ei ole riippuvainen käyttöjärjestelmästä, jonka päällä sitä ajetaan. Käytännössä tämä tarkoittaa, että se toimii Windowsissa, Applessa ja muissa käyttöjärjestelmissä samalla tavalla.
+            </p>
             <h3>Docker</h3>
             <p>Dockerin avulla voidaan sekä laittaa sovelluksia kontteihin että ajaa kontteja. Se tarjoaa tehokkaan ajoympäristön kontteihin sijoitetuille sovelluksille. Docker-kontit eroavat virtuaalipalvelimista niin, että kontit eivät tarvitse omaa käyttöjärjestelmää, vaan ne jakavat yhden yhteisen käyttöjärjestelmän. Konteissa on vain sovelluksen tarvitsemat komponentit. Ne ovat myös resurssitehokkaita, sillä ne eivät varaa resursseja etukäteen, vaan pyytävät niitä vain ajoa varten. Käytännössä siis kontissa on sovelluksen tarvitsema minimiajoympäristö yhdessä paketissa. 
+              <br/>
               <br/>
                 Dockerin käytöllä on useita hyötyjä. Se nopeuttaa IT-ympäristön modernisointia ja vauhdittaa digitalisaatiota. Se on todella kustannustehokas, joten sen avulla voi säästää IT-kuluissa. Docker myös mahdollistaa nopeamman sovelluskehityksen ja uusien versioiden julkaisemisen. Standardisoinnin ansiosta sovelluksen kehitysympäristö on täsmälleen saman näköinen kuin testi- tai tuotantoympäristö, mikä helpottaa sovelluskehitystä. Docker myös mahdollistaa uusien teknologioiden opettelun helposti, sillä julkisissa hakemistoissa on ladattavissa tuhansia erilaisia tuotekokoonpanoja ja konfiguraatioita sisältäviä kontteja.
                 </p>
@@ -36,21 +52,6 @@
             <br/>
             <h4>Docker Compose</h4>
             <p>Docker Compose on työkalu, jonka avulla voidaan luoda ja hallinnoida useasta kontista koostuvia kokonaisuuksia. Docker Composea käytetään komentoriviltä. Palvelut konfiguroidaan YAML-muotoisessa docker-compose.yml tiedostossa, ja koko paketti käynnistetään komennolla ”docker-compose up”. Palvelun sulkeminen puolestaan tapahtuu komennolla ”docker-compose down”. Tämä komento sulkee ja poistaa luodut kontit ja verkon, mutta ei hävitä volumeja. Mikäli myös volumet halutaan poistaa, annetaan komento ”docker-compose down -v”.</p>
-            <h3>Mikropalveluarkkitehtuuri</h3>
-            <p>Mikropalveluarkkitehtuurissa sovellus koostuu useista pienistä palveluista, jotka liittyvät löyhästi toisiinsa ovat itsenäisesti asennettavissa. Jokainen mikropalvelin vastaa tietyistä toiminnallisuuksista ja palvelut kommunikoivat keskenään. Kommunikointiin palvelut käyttävät kevyitä protokollia kuten HTTP/REST. Jokaisella mikropalvelulla on oma lähdekoodi, tietokanta ja työkalut, eli niitä voi kehittää ja asentaa toisistaan riippumatta. 
-              <br/>
-              <br/>
-                Mikropalveluarkkitehtuurilla on useita hyötyjä. Palvelut ovat pieniä ja helposti ymmärrettäviä, jolloin kehits ja asennus nopeutuvat. Tämä mahdollistaa myös paremman skaalattavuuden. Kun palvelu koostuu useista mikropalveluista, se on vikasietoisempi. Ongelma yhdellä osa-alueella ei vie koko palvelua alas. Yksittäiset pienet osa-alueet ovat myös helpommin ylläpidettävissä.
-              <br/>
-              <br/>
-                Kuten kaikissa asioissa, myös mikropalveluarkkitehtuurissa on haasteita. Suuressa, monesta mikropalvelusta koostuvassa palvelussa kokonaisuus voi muuttua monimutkaiseksi ja haastavaksi ymmärtää. Mikropalvelut pyörivät jokainen omassa ympäristössään, joten resurssien kulutus voi olla suurta.  Myös tiedonsiirrossa voi olla viiveitä, sillä mikropalvelut kommunikoivat toistensa kanssa verkon yli.
-            </p>
-            <h3>Konttiteknologia</h3>
-            <p>Konttien avulla ohjelmille tarjotaan standardoitu ympäristö, jossa niitä voidaan ajaa. Ohjelman ollessa asetettuna konttiin, sitä voidaan siirrellä kehittäjän tietokoneelta testiympäristöön ja sieltä tuotantoon. Kontteja voidaan helposti myös siirtää julkiseen pilveen. Kontit ovat standardoitu tapa pakata ohjelmisto niin, että sitä voidaan siirtää paikasta toiseen ilman, että ohjelmistoa tarvitsee muokata.
-              <br/>
-              <br/>
-                Konttien ansiosta sovellus tarvitsee vähemmän resursseja, ja niiden suorituskyky on virtuaalipalvelinta parempi. Konttien yksi selkeä etu on myös ympäristön standardointi. Tästä syystä konttia on helpompi liikuttaa konesalista toiseen kuin virtuaalikonetta. Koska yksi kontti sisältää usein vain ohjelman tietyn ominaisuuden, mahdollistuu ohjelman päivittäminen pala kerrallaan. Tämä nopeuttaa ja helpottaa ohjelmistokehitystä, sillä mahdollisissa ongelmatilanteissa on helppo palata vanhaan ympäristöön. Dockerin vahvuuksiin kuuluu se, että se ei ole riippuvainen käyttöjärjestelmästä, jonka päällä sitä ajetaan. Kytännössä tämä tarkoittaa, että se toimii Windowsissa, Applessa ja muissa käyttöjärjestelmissä samalla tavalla.
-            </p>
     </div>
   </div>
 </body>
