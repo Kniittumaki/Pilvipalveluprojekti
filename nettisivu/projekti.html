@@ -40,7 +40,10 @@
                 Dockerin käytöllä on useita hyötyjä. Se nopeuttaa IT-ympäristön modernisointia ja vauhdittaa digitalisaatiota. Se on todella kustannustehokas, joten sen avulla voi säästää IT-kuluissa. Docker myös mahdollistaa nopeamman sovelluskehityksen ja uusien versioiden julkaisemisen. Standardisoinnin ansiosta sovelluksen kehitysympäristö on täsmälleen saman näköinen kuin testi- tai tuotantoympäristö, mikä helpottaa sovelluskehitystä. Docker myös mahdollistaa uusien teknologioiden opettelun helposti, sillä julkisissa hakemistoissa on ladattavissa tuhansia erilaisia tuotekokoonpanoja ja konfiguraatioita sisältäviä kontteja.
                 </p>
                 <br/>
-            <h4>Dockerin peruskomponentit</h4>
+                <br/>
+              <p>Docker Compose on työkalu, jonka avulla voidaan luoda ja hallinnoida useasta kontista koostuvia kokonaisuuksia. Docker Composea käytetään komentoriviltä. Palvelut konfiguroidaan YAML-muotoisessa docker-compose.yml tiedostossa, ja koko paketti käynnistetään komennolla ”docker-compose up”. Palvelun sulkeminen puolestaan tapahtuu komennolla ”docker-compose down”. Tämä komento sulkee ja poistaa luodut kontit ja verkon, mutta ei hävitä volumeja. Mikäli myös volumet halutaan poistaa, annetaan komento ”docker-compose down -v”.</p>
+              <br/>      
+      <h4>Dockerin peruskomponentit</h4>
             <ul>
                 <li>Docker Image on yksi tiedosto, joka sisältää sekä itse sovelluksen, että sen tarvitsemat ohjelmistot ja käyttöjärjestelmän. Image on periaatteessa itsenäinen kokonaisuus, jota voi siirrellä paikasta toiseen. Windowsissa yksi image voi sisältää käyttöjärjestelmän, sovelluspalvelimen, ASP.NET-komponentit ja varsinaisen sovelluksen ja sen tarvitsemat konfiguraatiot. Tiedosto sisältää kaiken tarvittavan, mitä tämän esimerkin web-sovelluksen ajaminen vaatii.</li>
                 <li>Docker File on konfiguraatiotiedosto, joka kertoo, miten Docker image rakennetaan.</li>
@@ -50,8 +53,7 @@
                 <li>Orchestrator eli automaattinen hallinta on ohjelma, jonka avulla kontteja voidaan hallita silloin, kun tarvitaan useampi palvelin ajamaan kontteja. Yksi esimerkki tällaisesta on Docker Swarm, joka on Dockerin orkestrointi-ohjelma. Sen avulla voidaan muodostaa useiden palvelimien klustereita ja jakaa kuormia palvelimien välillä.</li>
             </ul>
             <br/>
-            <h4>Docker Compose</h4>
-            <p>Docker Compose on työkalu, jonka avulla voidaan luoda ja hallinnoida useasta kontista koostuvia kokonaisuuksia. Docker Composea käytetään komentoriviltä. Palvelut konfiguroidaan YAML-muotoisessa docker-compose.yml tiedostossa, ja koko paketti käynnistetään komennolla ”docker-compose up”. Palvelun sulkeminen puolestaan tapahtuu komennolla ”docker-compose down”. Tämä komento sulkee ja poistaa luodut kontit ja verkon, mutta ei hävitä volumeja. Mikäli myös volumet halutaan poistaa, annetaan komento ”docker-compose down -v”.</p>
+            
     </div>
   </div>
 </body>
