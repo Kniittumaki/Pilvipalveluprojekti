@@ -17,7 +17,39 @@
     <p>Projektin aiheena on luoda mikropalvelukäytänteen mukainen ympäristö. 
       Tehtävässä hyödynsimme konttiteknologiaa Dockerin avulla, sekä Docker Composea jonka avulla saimme useamman kontin toimimaan yhdessä. 
       Sisällöksi luomaamme ympäristöön lisäsimme tehtävän dokumentoinnin. 
-      Tehtävää tehdessä hyödynsimme GitHubia, jotta saimme ympäristön kaikkien tietokoneille. </p>
+      Tehtävää tehdessä hyödynsimme GitHubia, jotta saimme ympäristön kaikkien tietokoneille. 
+      <br/>
+      <br/>
+      Mikropalvelumme koostuu näistä konteista:</p> 
+      <ul>
+        <li>httpd (tämä dokumentaatiosivu)</li>
+        <li>traefik (reverse proxy)</li>
+        <li>MySQL (tietokanta)</li>
+      </ul>
+    <h6>Httpd:</h6>
+    <br/>
+    <p>Yksinkertainen http -sivu, jonka tarkoitus on näyttää sisällön julkisen verkon puolella.</p>
+    <br/>
+    <br/>
+    <h6>MySQL:</h6> 
+    <br/>
+    <p>Tietokanta, jossa voidaan yleisesti säilyttää erilaista dataa, kuten logitietoa, käyttäjien autorisointi ja autentikointidataa, staattista sekä dynaamista sisältöä.</p>
+    <br/>
+    <br/>
+    <h6>Treafik:</h6>
+    <p>Toimii välikätenä verkon ja hostin välillä, joka parantaa palvelun turvallisuutta, kun palvelut eriytetään edusta- ja taustaverkkoon. 
+    Näin varmistetaan, että julkiseen verkkoon näkyy vain ne asiat, jota halutaan siellä näkyvän. 
+    Sen lisäksi, reverse proxy salaa liikennettä asiakkaan ja palvelimen välillä.  
+    Netti sivu toimii osittain edustaverkossa (joka on käyttäjille näkyvissä) ja taustaverkossa (josta sisältö voidaan hakea). 
+    Tietokanta toimii vain taustaverkossa ja kommunikoi nettisivun kanssa reverse proxyn kautta. 
+    <br/>
+    <br/>
+    Traefik toimii myös kuorman tasaajana, eli nettisivun liikennettä voidaan jakaa useammalle palvelimelle ruuhkaantumisen välttämiseksi. 
+    Tämä nettisivu voidaan skaalata useaan konttiin. Jos liikenne ruuhkautuisi yhdellä palvelimella, voidaan se tarpeen mukaan ohjata saumattomasti toiselle palvelimelle. 
+    </p>
+    <br/>
+    <br/>
+    <p>Kaikesta tästä koostuu mikropalvelu: kaikki nämä erilliset palvelut ajetaan yhtenäisesti samasta alustasta. </p>
   </div>
   <div class="container">
     <div class="row">
@@ -121,8 +153,10 @@
               Daemon voi myös kommunikoida toisten daemonien kanssa hallinnoidakseen Docker palveluja. 
               Docker client on yleisin tapa, miten Dockerin käyttäjät kommunikoivat Dockerin kanssa. 
               <br/>
+              <br/>
               Kun käytetään komentoja kuten ”docker run”, client lähettää käskyn Docker daemonille, joka toteuttaa ne. 
               Käsky <code>docker</code> käyttää Docker API:a. Docker client voi kommunikoida useamman kuin yhden daemonin kanssa.
+              <br/>
               <br/>
               Docker desktop on helposti asennettava sovellus Mac, Windows tai Linux ympäristöön, 
               joka mahdollistaa konttirakenteisten sovellusten ja mikropalveluiden luomisen ja jakamisen. 
