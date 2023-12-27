@@ -7,7 +7,7 @@ services:
     command:
       - --api.insecure=true
       - --providers.docker
-      - --providers.docker
+      - --providers.docker 
       - --providers.docker.exposedbydefault=false
       - --entryPoints.web.address=:80
     ports:
@@ -25,23 +25,23 @@ services:
       - "traefik.http.routers.traefik.rule=Host(`traefik.fbi.com`)"
       - "traefik.http.routers.traefik.entryPoints=web"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
-      
+
   nettisivu:
       image: httpd:latest
       ports:
         - 8000:80
       volumes:
         - type: bind
-          source: ./nettisivu
+          source: ./html
           target: /usr/local/apache2/htdocs
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.traefik.rule=Host(`nettisivu.fbi.com`)"
         - "traefik.http.routers.traefik.entryPoints=web"
-        - "traefik.http.services.traefik.loadbalancer.server.port=8000"
+        - "traefik.http.services.traefik.loadbalancer.server.port=80"
       networks:
-        - tausta
         - edusta
+        - tausta
 
   database:
     image: mysql:5.7
@@ -49,9 +49,9 @@ services:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=database-1
     volumes:
-      - ./volumes/db/db_data:/var/lib/mysql # ei julkaista www volumeen
+      - ./volumes/db/db_data:/var/lib/mysql
     networks:
-      - tausta  # ===> private networkkiin tietenkin database
+      - tausta  # ===> eriytetään edusta verkosta data
 
 volumes:
   html:
