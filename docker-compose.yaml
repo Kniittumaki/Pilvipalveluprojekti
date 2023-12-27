@@ -32,7 +32,7 @@ services:
         - 8000:80
       volumes:
         - type: bind
-          source: ./html
+          source: ./nettisivu
           target: /usr/local/apache2/htdocs
       labels:
         - "traefik.enable=true"
