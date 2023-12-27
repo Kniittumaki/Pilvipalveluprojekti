@@ -25,6 +25,7 @@ services:
       - "traefik.http.routers.traefik.rule=Host(`traefik.fbi.com`)"
       - "traefik.http.routers.traefik.entryPoints=web"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+      
   nettisivu:
       image: httpd:latest
       ports:
